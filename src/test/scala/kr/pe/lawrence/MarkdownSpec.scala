@@ -13,8 +13,8 @@ import org.scalatest._
 class MarkdownSpec extends FlatSpec with Matchers {
 
   "Markdown" should "remove" in {
-    val input = "## Hello world"
-    Markdown.remove(input) should be("Hello world")
+    val result = """<a href="http://www.google.com">Google</a> ![image](http://www.google.com/image) [Facebook][http://www.facebook.com]""".replaceAll("<[^>]*>", "")
+    Markdown.remove(result) should be("Google  Facebook")
   }
 
   /*
